@@ -10,8 +10,8 @@ data class User (
         var avatar: String?,
         var rating: Int = 0,
         var respect: Int = 0,
-        val lastVisit: Date? = null,
-//        val lastVisit: Date? = Date(),
+//        val lastVisit: Date? = null,
+        val lastVisit: Date? = Date(),
         val isOnline: Boolean = false
 //    var introBit :String = "$firstName $lastName!!!!"
 ) {
@@ -39,8 +39,8 @@ data class User (
         fun makeUser(fullName: String?) : User {
             lastId++
 
-//            var (firstName, lastName) = Utils.parseFullName(fullName)
-            val (firstName, lastName) = Utils.parseFullName(fullName)
+            var (firstName, lastName) = Utils.parseFullName(fullName)
+//            val (firstName, lastName) = Utils.parseFullName(fullName)
             return User(id = "$lastId", firstName = firstName, lastName = lastName )
         }
     }

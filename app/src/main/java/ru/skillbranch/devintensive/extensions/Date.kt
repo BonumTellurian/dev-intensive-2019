@@ -2,6 +2,9 @@ package ru.skillbranch.devintensive.extensions
 
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.abs
+import kotlin.math.absoluteValue
+import kotlin.jvm.javaClass as javaClass1
 
 const val SECOND = 1000L
 const val MINUTE = 60 * SECOND
@@ -33,3 +36,78 @@ enum class TimeUnits{
     HOUR,
     DAY
 }
+
+//private fun Date.humanizeDiff(date:Date = Date()): String {
+fun Date.humanizeDiff(date:Date = Date()): String {
+    val diff = abs(this.time - date.time)/1000
+    val diff_m = abs(this.time - date.time)/(1000*60)
+    val diff_h = abs(this.time - date.time)/(1000*60*60)
+    val diff_d = abs(this.time - date.time)/(1000*60*60*24)
+//    val diff_d = abs(this.time - date.time)/(1000*60*60*24)
+    var tense: String
+
+//    when {
+//        this.time - date.time > 0 -> tense = " через"
+//        else -> tense = " назад"
+//    }
+    when {
+        this.time - date.time > 0 -> tense = "Future"
+        this.time - date.time < 0 -> tense = "Past"
+//        else -> tense = "Past"
+        else -> tense = "Wrong"
+    }
+
+    println("====")
+    println(diff_d)
+    println(diff_h)
+//    println("${widget::class.qualifedName}")
+//    System.out.println(diff.javaClass1.kotlin.qualifiedName)
+//    var Nooo = Date.add
+    println(tense)
+
+     return when {
+//         diff <= SECOND.absoluteValue -> "только что"
+//         diff <= SECOND + 1 -> "только что" // Заменить на верхнюю
+         diff <= 1 -> "только что" // Заменить на верхнюю
+         diff <=  45 -> formatTenseTime("несколько секунд", tense)
+         diff <=  75 -> formatTenseTime("минуту", tense)
+//         diff <= MINUTE.absoluteValue * 45 -> formatTenseTime(formatWordTime(diff.toString()).first, tense)
+         diff <=  45 * 60 -> formatTenseTime((diff_m.toString() + " " + formatWordTime(diff_m.toString()).first), tense)
+         diff <=  75 * 60 -> formatTenseTime("час", tense)
+         diff <=  22 * 60 * 60 -> formatTenseTime((diff_h.toString() + " " + formatWordTime(diff_h.toString()).second), tense)
+         diff <=  26 * 60 * 60 -> formatTenseTime("день", tense)
+//         diff <=  360 * 60 * 60 * 24 -> formatTenseTime((diff_d.toString() + " " + formatWordTime(diff_d.toString()).third), tense)
+         diff <=  360 * 60 * 60 * 24 -> formatTenseTime((diff_d.toString() + " " + formatWordTime(diff_d.toString()).third), tense)
+         else -> "более года назад"
+    }
+}
+
+//fun formatTenseTime(dateString: String, tense:Boolean): String {
+fun formatTenseTime(dateString: String?, tense:String): String {
+    println("SOME-> "+tense)
+    return when{
+        tense == "Past" -> dateString + " назад"
+        tense == "Future" -> "через " + dateString
+        else -> "Some wrong"
+    }
+}
+
+fun formatWordTime(dateString: String): Triple<String?,String?,String?>{
+    val checkedNumberTwo = dateString.takeLast(2).toInt()
+    val checkedNumber = dateString.takeLast(1).toInt()
+    return when{
+        checkedNumberTwo == 1 -> Triple("минута", "час", "день")
+        checkedNumber == 1 -> Triple("минут", "часов", "дней")
+        checkedNumber in 2..4 -> Triple("минуты", "часа", "дня")
+        else -> Triple("минут", "часов", "дней")
+
+    }
+}
+
+//enum class TimeFormatUnits
+
+
+//    return Date.add(2, SECOND)
+//    return (Date() - Date().add(-2, TimeUnits.HOUR))
+//    TODO ("not implemented") // To change body of created function use File | Settings | File Templates.
+//}
