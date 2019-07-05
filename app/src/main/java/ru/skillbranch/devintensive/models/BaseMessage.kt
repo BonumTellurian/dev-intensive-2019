@@ -1,6 +1,5 @@
 package ru.skillbranch.devintensive.models
 
-import android.service.voice.AlwaysOnHotwordDetector
 import java.util.*
 
 abstract class BaseMessage (
@@ -11,7 +10,8 @@ abstract class BaseMessage (
     val date:Date = Date()
 ) {
 
-    abstract fun formatMessage(id: String, from: User?, isIncoming: Boolean):String   //{
+//    abstract fun formatMessage(id: String, from: User?, isIncoming: Boolean):String   //{
+    abstract fun formatMessage():String   //{
 //        return("$id, $from, $isIncoming")
 //    }
 

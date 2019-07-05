@@ -1,7 +1,7 @@
 package ru.skillbranch.devintensive.Utils
 
-import androidx.lifecycle.Transformations.map
-import java.io.File.separator
+//import androidx.lifecycle.Transformations.map
+//import java.io.File.separator
 
 object Utils {
     fun parseFullName(fullName:String?):Pair<String?, String?>{
@@ -54,9 +54,19 @@ object Utils {
 
             }
 
-        return outputString
+//        return outputString
+        return outputString.toString()
     }
 
+
+//    fun toInitials(firstName: String?, lastName: String?): String? {
+//        when {
+//            firstName.isNullOrBlank() && lastName.isNullOrBlank() -> return null
+//            firstName.isNullOrBlank() -> return lastName?.get(0).toString().capitalize()
+//            lastName.isNullOrBlank() -> return firstName?.get(0).toString().capitalize()
+//            else -> return firstName?.get(0).toString().capitalize() + lastName?.get(0).toString().capitalize()
+//        }
+//    }
 
     fun toInitials(firstName: String?, lastName: String?): String? {
         when {
@@ -65,5 +75,6 @@ object Utils {
             lastName.isNullOrBlank() -> return firstName?.get(0).toString().capitalize()
             else -> return firstName?.get(0).toString().capitalize() + lastName?.get(0).toString().capitalize()
         }
+
     }
 }
