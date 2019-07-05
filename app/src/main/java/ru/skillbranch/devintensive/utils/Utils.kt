@@ -1,4 +1,4 @@
-package ru.skillbranch.devintensive.Utils
+package ru.skillbranch.devintensive.utils
 
 //import androidx.lifecycle.Transformations.map
 //import java.io.File.separator
@@ -54,8 +54,8 @@ object Utils {
 
             }
 
-//        return outputString
-        return outputString.toString()
+        return outputString
+//        return outputString.toString()
     }
 
 
