@@ -11,8 +11,8 @@ class ImageMessage (
     date: Date = Date(),
     var image:String?
 ) : BaseMessage(id, from, chat, isIncoming, date){
-    override fun formatMessage(): String
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        override fun formatMesage(): String = "id:$id ${from?.firstName}" +
-                    "${if(isIncoming) "получил" else "отправил" } изображение \"$image\" ${date.humanizeDiff()}"
+
+    override fun formatMessage(id: String, from: User?, isIncoming: Boolean): String = "id:$id ${from?.firstName}" +
+            " ${if(isIncoming) "получил" else "отправил" } изображение \"$image\" ${date.humanizeDiff()}"
+
 }
