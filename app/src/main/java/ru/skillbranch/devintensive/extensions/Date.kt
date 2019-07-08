@@ -32,7 +32,47 @@ enum class TimeUnits{
     SECOND,
     MINUTE,
     HOUR,
-    DAY
+    DAY;
+
+    fun plural(value: Int) : String {
+        // http://codinghamster.info/php/correct-plural-form-of-a-noun/
+        return when(this){
+            SECOND -> when {
+                value % 100 == 11 -> "$value секунд"
+                value % 10 == 1 -> "$value секунду"
+                value %100 in 12..14 -> "$value секунд"
+                value %10 in 2..4 -> "$value секунды"
+                else -> "$value секунд"
+            }
+
+            MINUTE -> when {
+                value % 100 == 11 -> "$value минут"
+                value % 10 == 1 -> "$value минуту"
+                value %100 in 12..14 -> "$value минут"
+                value %10 in 2..4 -> "$value минуты"
+                else -> "$value минут"
+            }
+
+            HOUR -> when {
+                value % 100 == 11 -> "$value часов"
+                value % 10 == 1 -> "$value час"
+                value %100 in 12..14 -> "$value часов"
+                value %10 in 2..4 -> "$value часа"
+                else -> "$value часов"
+            }
+
+            DAY -> when {
+                value % 100 == 11 -> "$value дней"
+                value % 10 == 1 -> "$value день"
+                value %100 in 12..14 -> "$value дней"
+                value %10 in 2..4 -> "$value дня"
+                else -> "$value дней"
+            }
+
+
+
+        }
+    }
 }
 
 //private fun Date.humanizeDiff(date:Date = Date()): String {
