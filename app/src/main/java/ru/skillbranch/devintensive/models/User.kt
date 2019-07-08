@@ -46,6 +46,7 @@ data class User (
     }
 
     data class Builder(
+        // https://www.baeldung.com/kotlin-builder-pattern
         var id: String = "",
         var firstName: String? = null,
         var lastName: String? = null,
