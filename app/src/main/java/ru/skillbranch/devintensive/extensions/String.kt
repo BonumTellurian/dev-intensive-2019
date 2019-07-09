@@ -16,7 +16,7 @@ fun String.stripHtml():String{
 //    val mR3 = """\&lt;"""
 //    val mR4 = """\&gt;"""
 //    val mR5 = """\&prime;"""
-    val mR6 = """\&Prime;"""
+//    val mR6 = """\&Prime;"""
 //    val mR7 = """\&quot;"""
     val mR7 = """\&quot;"""
 //    val mR8 = """\\s+"""
@@ -33,7 +33,7 @@ fun String.stripHtml():String{
 //        .replace(mR5.toRegex(), "")
         .replace("'", "")
 
-        .replace(mR6.toRegex(), "")
+//        .replace(mR6.toRegex(), "")
         .replace(mR7.toRegex(), "")
         .replace(mR8.toRegex(), " ")
 //        .replace(" {2,}", " ")
