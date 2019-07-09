@@ -12,5 +12,16 @@ fun String.stripHtml():String?{
 //    val matchResult = """\d+"""
 //    val matchResult = """<\s*a[^>]*>(.*?)<\s*/\s*a>"""
     val matchResult = """<.*?>"""
-    return String.replace(matchResult.toRegex(), "")
+    val mR2 = """&amp;"""
+    val mR3 = """&lt;"""
+    val mR4 = """&gt;"""
+    val mR5 = """&prime;"""
+    val mR6 = """&Prime;"""
+    val mR7 = """&quot;"""
+    val mR8 = """\\s+"""
+    return String.replace(matchResult.toRegex(), "").replace(mR2.toRegex(),"").
+        replace(mR3.toRegex(), "").replace(mR4.toRegex(), "").
+        replace(mR5.toRegex(), "").replace(mR6.toRegex(), "").
+        replace(mR7.toRegex(), "").replace(mR8.toRegex(), " ")
+
 }
