@@ -72,8 +72,8 @@ object Utils {
         when {
             firstName.isNullOrBlank() && lastName.isNullOrBlank() -> return null
             firstName.isNullOrBlank() -> return lastName?.get(0).toString().capitalize()
-            lastName.isNullOrBlank() -> return firstName?.get(0).toString().capitalize()
-            else -> return firstName?.get(0).toString().capitalize() + lastName?.get(0).toString().capitalize()
+            lastName.isNullOrBlank() -> return firstName.get(0).toString().capitalize()
+            else -> return firstName.get(0).toString().capitalize() + lastName.get(0).toString().capitalize()
         }
 
     }
