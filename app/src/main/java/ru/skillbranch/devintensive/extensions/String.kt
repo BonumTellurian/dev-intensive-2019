@@ -19,7 +19,6 @@ fun String.stripHtml():String{
 //    val mR6 = """\&Prime;"""
 //    val mR7 = """\&quot;"""
 //    val mR7 = """"\&quot;"""
-//    val mR7 = """"&quot;"""
 //    val mR8 = """\\s+"""
     val mR8 = """  +"""
 //    val mR8 = """ {2,}"""
