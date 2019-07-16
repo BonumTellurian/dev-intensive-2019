@@ -82,7 +82,7 @@ fun Date.humanizeDiff(date:Date = Date()): String {
     val diff_h = abs(this.time - date.time)/(1000*60*60)
     val diff_d = abs(this.time - date.time)/(1000*60*60*24)
 //    val diff_d = abs(this.time - date.time)/(1000*60*60*24)
-    var tense: String
+    val tense: String
 
 //    when {
 //        this.time - date.time > 0 -> tense = " через"
@@ -142,10 +142,3 @@ fun formatWordTime(dateString: String): Triple<String?,String?,String?>{
     }
 }
 
-//enum class TimeFormatUnits
-
-
-//    return Date.add(2, SECOND)
-//    return (Date() - Date().add(-2, TimeUnits.HOUR))
-//    TODO ("not implemented") // To change body of created function use File | Settings | File Templates.
-//}
