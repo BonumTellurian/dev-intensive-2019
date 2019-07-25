@@ -54,7 +54,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val (r,g,b) = benderObj.status.color
         benderImage.setColorFilter(Color.rgb(r,g,b), PorterDuff.Mode.MULTIPLY)
 
-        textTxt.setText(benderObj.askQuestion())
+//        textTxt.setText(benderObj.askQuestion())
+        textTxt.text = benderObj.askQuestion()
         sendBtn.setOnClickListener(this)
     }
 
@@ -150,16 +151,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     *  Для API Level >= 28 будет вызван после onStop()
     *  Не будет вызван, если Activity будет явно закрыто пользователем при нажатии на системную клавишу back
     */
-    override fun onSaveInstanceState(outState: Bundle) {
+    override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
 
-        outState.putString("STATUS", benderObj.status.name)
-        outState.putString("QUESTION", benderObj.question.name)
+        outState?.putString("STATUS", benderObj.status.name)
+        outState?.putString("QUESTION", benderObj.question.name)
         Log.d("M_MainActivity", "onSaveInstanceState ${benderObj.status.name}  ${benderObj.question.name}")
     }
 
     override fun onClick(v:View?) {
         if(v?.id == R.id.iv_send) {
+//        if(v?.id == iv_send) {
             val (phrase, color) = benderObj.listenAnswer(messageEt.text.toString().toLowerCase())
             messageEt.setText("")
             val (r,g,b) = color

@@ -11,4 +11,8 @@
     <dimen name="spacing_normal_16">16dp</dimen>
     <dimen name="spacing_small_16">8dp</dimen>
     <dimen name="spacing_tiny_4">4dp</dimen>
+
+    <!-- image button spice -->
+    <dimen name="image_button_size_24">24dp</dimen>
+
 </resources>
